@@ -48,24 +48,13 @@
         }
     </style>
 
-</head>
-<body onload="showImages()">
-	
-	<!--PreLoader-->
-    <div class="loader">
-        <div class="loader-inner">
-            <div class="circle"></div>
-        </div>
-    </div>
-    <!--PreLoader Ends-->
-	
 	<script>
 		// Funzione per precaricare un'immagine
 		function preloadImage(url) {
 			var img = new Image();
 			img.src = url;
 		}
-	
+
 		// Precarica le immagini chiamando la funzione preloadImage con i percorsi delle immagini
 		document.addEventListener('DOMContentLoaded', function() {
 			preloadImage('assets/img/products/mario.png');
@@ -78,13 +67,24 @@
 		});
 
 		// Funzione per mostrare le immagini precaricate
-        function showImages() {
-            var images = document.querySelectorAll('.preload-image');
-            images.forEach(function(image) {
-                image.classList.add('visible-image'); // Aggiunge la classe per mostrare l'immagine
-            });
-        }
+		function showImages() {
+			var images = document.querySelectorAll('.preload-image');
+			images.forEach(function(image) {
+				image.classList.add('visible-image'); // Aggiunge la classe per mostrare l'immagine
+			});
+		}
 	</script>
+
+</head>
+<body onload="showImages()">
+	
+	<!--PreLoader-->
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <!--PreLoader Ends-->
 	
 
 	<!-- header -->
