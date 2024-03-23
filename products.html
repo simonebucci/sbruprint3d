@@ -334,7 +334,7 @@
 		}
 	
 		// Precarica le immagini chiamando la funzione preloadImage con i percorsi delle immagini
-		window.onload = function() {
+		document.addEventListener('DOMContentLoaded', function() {
 			preloadImage('assets/img/products/mario.png');
 			preloadImage('assets/img/products/rayquaza.jpg');
 			preloadImage('assets/img/products/brake.jpg');
@@ -342,7 +342,7 @@
 			preloadImage('assets/img/products/Portachiavi_Padel/IMG_2401.jpeg');
 			preloadImage('assets/img/products/Guanto_da_Boxe/IMG_3391.jpeg');
 			// Aggiungi altre immagini da precaricare qui
-		};
+		});
 	</script>
 	
 
