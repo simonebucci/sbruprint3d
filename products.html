@@ -31,12 +31,22 @@
 	<!-- responsive -->
 	<link rel="stylesheet" href="assets/css/responsive.css">
 
-	<script>window.onload = function() {
-		if(!window.location.hash) {
-			window.location = window.location + '#loaded';
-			window.location.reload();
+	
+
+<script type="text/javascript">
+	$(document).ready(function(){    
+		//Check if the current URL contains '#'
+		if(document.URL.indexOf("#")==-1){
+			// Set the URL to whatever it was plus "#".
+			url = document.URL+"#";
+			location = "#";
+	
+			//Reload the page
+			location.reload(true);
 		}
-	}</script>
+	});
+	</script>
+	
 
 </head>
 <body>
