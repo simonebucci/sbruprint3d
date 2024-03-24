@@ -30,37 +30,34 @@
 	<link rel="stylesheet" href="assets/css/main.css">
 	<!-- responsive -->
 	<link rel="stylesheet" href="assets/css/responsive.css">
-</head>
-<body>
 
     <!-- JavaScript to preload images -->
     <script>
-        // Array to store image objects
+        var preloaded = 0;
         var images = ["assets/img/products/mario.png","assets/img/products/rayquaza.jpg","assets/img/products/brake.jpg","assets/img/products/Sonic/IMG_2262.jpeg","assets/img/products/Portachiavi_Padel/IMG_2401.jpeg","assets/img/products/Guanto_da_Boxe/IMG_3391.jpeg"];
 
-        // Function to preload images
-        function preloadImages() {
-            // Select all image elements with 'src' attribute
-            var imgElements = document.querySelectorAll('img[src]');
-
-            // Loop through each image element
-            imgElements.forEach(function(img) {
-                // Create new Image object
-                var imgObj = new Image();
-                // Set src attribute to preload image
-                imgObj.src = img.getAttribute('src');
-                // Push Image object into array
-                images.push(imgObj);
-            });
+        function preLoader(e) {
+            for (var i = 0; i < images.length; i++) {
+                var tempImage = new Image();
+                
+                tempImage.addEventListener("load", progress, true);
+                tempImage.src = imageArray[i];
+            }
         }
+        
+        function progress() {
+            preloaded++;
+            
+            if (preloaded == imageArray.length) {
+                //ALL Images have been loaded, perform the desired action
+            }
+        }
+        this.addEventListener("DOMContentLoaded", preLoader, true);
 
-        // Call preloadImages function when window is loaded
-        window.onload = function() {
-            preloadImages();
-        };
     </script>
 
-	
+</head>
+<body>
 	<!--PreLoader-->
     <div class="loader">
         <div class="loader-inner">
