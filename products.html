@@ -31,17 +31,20 @@
 	<!-- responsive -->
 	<link rel="stylesheet" href="assets/css/responsive.css">
 
-	<script language=" JavaScript" >
-		<!-- 
-		function LoadOnce() 
-		{ 
-		window.location.reload(); 
-		} 
-		//-->
-	</script>
+	<script>
 
+	function reloadIt() {
+		if (window.location.href.substr(-2) !== "?r") {
+			window.location = window.location.href + "?r";
+		}
+	}
+	
+	setTimeout('reloadIt()', 1000)();
+	
+	</script>
+	
 </head>
-<body onLoad=" LoadOnce()">
+<body onLoad=" reloadIt()">
 	
 	<!--PreLoader-->
     <div class="loader">
