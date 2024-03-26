@@ -1,52 +1,43 @@
 <?php
-	
-	if( empty( $_POST['token'] ) ){
-		echo '<span class="notice">Error!</span>';
-		exit;
-	}
-	if( $_POST['token'] != 'FsWga4&@f6aw' ){
-		echo '<span class="notice">Error!</span>';
-		exit;
-	}
-	
-	$name = $_POST['name'];
-	$from = $_POST['email'];
-	$phone = $_POST['phone'];
-	$subject = stripslashes( nl2br( $_POST['subject'] ) );
-	$message = stripslashes( nl2br( $_POST['message'] ) );
-	
-	$headers ="From: Form Contact <$from>\n";
-	$headers.="MIME-Version: 1.0\n";
-	$headers.="Content-type: text/html; charset=iso 8859-1";
-	
-	ob_start();
-	?>
-		Hi sbruprint3d!<br /><br />
-		<?php echo ucfirst( $name ); ?>  has sent you a message via contact form on your website!
-		<br /><br />
-		
-		Name: <?php echo ucfirst( $name ); ?><br />
-		Email: <?php echo $from; ?><br />
-		Phone: <?php echo $phone; ?><br />
-		Subject: <?php echo $subject; ?><br />
-		Message: <br /><br />
-		<?php echo $message; ?>
-		<br />
-		<br />
-		============================================================
-	<?php
-	$body = ob_get_contents();
-	ob_end_clean();
-	
-	$to = 'sbruprint3d@gmail.com';
+//Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
-	$s = mail($to,$subject,$body,$headers,"-t -i -f $from");
+//Load Composer's autoloader
+require 'vendor/autoload.php';
 
-	if( $s == 1 ){
-		echo '<div class="success"><i class="fas fa-check-circle"></i><h3>Thank You!</h3>Your message has been sent successfully.</div>';
-	}else{
-		echo '<div>Your message sending failed!</div>';
-	}
+//Create an instance; passing `true` enables exceptions
+$mail = new PHPMailer(true);
 
-	
-?>
+try {
+    //Server settings
+    //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    $mail->isSMTP();                                            //Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username   = 'simonegames@gmail.com';                     //SMTP username
+    $mail->Password   = 'djyj ckzl ckxm jcjg';                               //SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+    //Recipients
+    $mail->setFrom('sbruprint3d@gmail.com', 'Mailer');
+    $mail->addAddress('simonegames@gmail.com');     //Add a recipient
+    //$mail->addAddress('sbruprint3d@gmail.com', 'SbruPrint3D');               //Name is optional
+    $mail->addReplyTo('sbruprint3d@gmail.com', 'Information');
+    //$mail->addCC('cc@example.com');
+    //$mail->addBCC('bcc@example.com');
+
+    //Content
+    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->Subject = $_POST['subject'];
+    $mail->Body    = $_POST['name'].' sent this message: <br />'.$_POST['message'].'<br />from: '.$_POST['email'].' '.$_POST['phone'];
+    //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
