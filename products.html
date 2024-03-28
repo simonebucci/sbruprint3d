@@ -35,39 +35,30 @@
     <script>
         window.onload = function() {
             var link = document.getElementById('css-link');
-            var retryCount = 0; // Contatore per i tentativi di ricarica
-            var maxRetries = 3; // Numero massimo di tentativi di ricarica consentiti
-            var reloadScheduled = false; // Flag per indicare se la ricarica è stata programmata
-
-            function reloadPage() {
-                console.log("Tentativo di ricarica della pagina...");
-                window.location.reload();
-            }
+            var maxAttempts = 3; // Numero massimo di tentativi
+            var attemptCount = 0; // Contatore dei tentativi
 
             function checkCSSLoaded() {
-                // Crea un oggetto Image per verificare se il file CSS è stato caricato correttamente
-                var img = new Image();
-                img.onload = function() {
-                    console.log("CSS caricato dalla rete");
-                    // Il file CSS è stato caricato correttamente, quindi non è necessario aggiornare la pagina
-                };
-                img.onerror = function() {
-                    console.log("Errore nel caricamento CSS, probabile non presente in cache");
-                    // Il file CSS non è stato caricato correttamente
-                    if (!reloadScheduled && retryCount < maxRetries) {
-                        // Se non abbiamo superato il numero massimo di tentativi e la ricarica non è stata già programmata
-                        reloadScheduled = true;
-                        retryCount++;
-                        setTimeout(reloadPage, 1000);
+                // Verifica se le regole CSS sono state applicate agli elementi della pagina
+                var h1ComputedStyle = window.getComputedStyle(document.querySelector('h1'));
+                if (h1ComputedStyle && h1ComputedStyle.color !== "rgba(0, 0, 0, 0)") {
+                    console.log("CSS caricato dalla cache, mostra il contenuto della pagina.");
+                    // Mostra il contenuto della pagina
+                    document.body.style.display = "block";
+                } else {
+                    console.log("CSS non presente in cache, tentativo " + (attemptCount + 1) + " di " + maxAttempts);
+                    if (++attemptCount < maxAttempts) {
+                        // Ricarica la funzione dopo un ritardo
+                        setTimeout(checkCSSLoaded, 1000);
                     } else {
-                        console.log("Numero massimo di tentativi di ricarica raggiunto o ricarica già programmata, interrompendo.");
+                        console.log("Numero massimo di tentativi raggiunto, ricaricamento della pagina...");
+                        // Numero massimo di tentativi raggiunto, ricarica la pagina
+                        window.location.reload();
                     }
-                };
-                // Imposta l'URL dell'immagine sullo stesso URL del file CSS
-                img.src = link.href;
+                }
             }
 
-            // Aggiungiamo un ritardo prima di verificare se il CSS è in cache
+            // Avvia il controllo del caricamento del CSS dopo un ritardo
             setTimeout(checkCSSLoaded, 1000);
         };
     </script>
