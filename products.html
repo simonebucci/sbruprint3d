@@ -30,17 +30,24 @@
 	<link rel="stylesheet" href="assets/css/main.css">
 	<!-- responsive -->
 	<link rel="stylesheet" href="assets/css/responsive.css">
-	
-	<script>if ('performance' in window) {
-		const navigationLastEntry = performance.getEntriesByType('navigation').pop();
-	  
-		if (navigationLastEntry
-			&& navigationLastEntry.type === 'back_forward'
-			&& navigationLastEntry.unloadEventStart === 0) {
-		  window.location.reload(true);
-		}
-	  } 
-	</script>
+
+	<script>
+        window.onload = function() {
+            var link = document.getElementById('css-link');
+            // Aggiungi un listener per il caricamento del file CSS
+            link.onload = function() {
+                console.log("CSS caricato dalla rete");
+                // Il file CSS è stato caricato dalla rete, quindi aggiorna la pagina
+                window.location.reload();
+            };
+            // Aggiungi un listener per gestire il caso in cui il file CSS non sia stato trovato nella cache
+            link.onerror = function() {
+                console.log("Errore nel caricamento CSS, probabile non presente in cache");
+                // Il file CSS non è stato trovato nella cache, quindi aggiorna la pagina
+                window.location.reload();
+            };
+        };
+    </script>
 
 </head>
 <body>
