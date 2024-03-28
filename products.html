@@ -37,7 +37,8 @@
             var link = document.getElementById('css-link');
             var retryCount = 0; // Contatore per i tentativi di ricarica
             var maxRetries = 3; // Numero massimo di tentativi di ricarica consentiti
-            
+            var reloadScheduled = false; // Flag per indicare se la ricarica è stata programmata
+
             function reloadPage() {
                 console.log("Tentativo di ricarica della pagina...");
                 window.location.reload();
@@ -53,12 +54,13 @@
                 img.onerror = function() {
                     console.log("Errore nel caricamento CSS, probabile non presente in cache");
                     // Il file CSS non è stato caricato correttamente
-                    if (retryCount < maxRetries) {
-                        // Se non abbiamo superato il numero massimo di tentativi, attendiamo un secondo e riproviamo
+                    if (!reloadScheduled && retryCount < maxRetries) {
+                        // Se non abbiamo superato il numero massimo di tentativi e la ricarica non è stata già programmata
+                        reloadScheduled = true;
                         retryCount++;
                         setTimeout(reloadPage, 1000);
                     } else {
-                        console.log("Numero massimo di tentativi di ricarica raggiunto, interrompendo.");
+                        console.log("Numero massimo di tentativi di ricarica raggiunto o ricarica già programmata, interrompendo.");
                     }
                 };
                 // Imposta l'URL dell'immagine sullo stesso URL del file CSS
