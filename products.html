@@ -31,10 +31,19 @@
 	<!-- responsive -->
 	<link rel="stylesheet" href="assets/css/responsive.css">
 	
+	<script>if ('performance' in window) {
+		const navigationLastEntry = performance.getEntriesByType('navigation').pop();
+	  
+		if (navigationLastEntry
+			&& navigationLastEntry.type === 'back_forward'
+			&& navigationLastEntry.unloadEventStart === 0) {
+		  window.location.reload(true);
+		}
+	  } 
+	</script>
+
 </head>
 <body>
-	
-	
 	
 	<!--PreLoader-->
     <div class="loader">
