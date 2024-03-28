@@ -34,21 +34,39 @@
 	<link id="css-link" rel="stylesheet" href="assets/css/main.css">
     <script>
         window.onload = function() {
-			setTimeout(500);
             var link = document.getElementById('css-link');
-            // Crea un oggetto Image per verificare se il file CSS è stato caricato correttamente
-            var img = new Image();
-            img.onload = function() {
-                console.log("CSS caricato dalla rete");
-                // Il file CSS è stato caricato correttamente, quindi non è necessario aggiornare la pagina
-            };
-            img.onerror = function() {
-                console.log("Errore nel caricamento CSS, probabile non presente in cache");
-                // Il file CSS non è stato caricato correttamente, quindi aggiorna la pagina
+            var retryCount = 0; // Contatore per i tentativi di ricarica
+            var maxRetries = 3; // Numero massimo di tentativi di ricarica consentiti
+            
+            function reloadPage() {
+                console.log("Tentativo di ricarica della pagina...");
                 window.location.reload();
-            };
-            // Imposta l'URL dell'immagine sullo stesso URL del file CSS
-            img.src = link.href;
+            }
+
+            function checkCSSLoaded() {
+                // Crea un oggetto Image per verificare se il file CSS è stato caricato correttamente
+                var img = new Image();
+                img.onload = function() {
+                    console.log("CSS caricato dalla rete");
+                    // Il file CSS è stato caricato correttamente, quindi non è necessario aggiornare la pagina
+                };
+                img.onerror = function() {
+                    console.log("Errore nel caricamento CSS, probabile non presente in cache");
+                    // Il file CSS non è stato caricato correttamente
+                    if (retryCount < maxRetries) {
+                        // Se non abbiamo superato il numero massimo di tentativi, attendiamo un secondo e riproviamo
+                        retryCount++;
+                        setTimeout(reloadPage, 1000);
+                    } else {
+                        console.log("Numero massimo di tentativi di ricarica raggiunto, interrompendo.");
+                    }
+                };
+                // Imposta l'URL dell'immagine sullo stesso URL del file CSS
+                img.src = link.href;
+            }
+
+            // Aggiungiamo un ritardo prima di verificare se il CSS è in cache
+            setTimeout(checkCSSLoaded, 1000);
         };
     </script>
 
