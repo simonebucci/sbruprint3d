@@ -55,7 +55,7 @@
                         console.log("CSS non presente in cache, tentativo " + (attemptCount + 1) + " di " + maxAttempts);
                         if (++attemptCount < maxAttempts) {
                             // Ricarica la funzione dopo un ritardo
-                            setTimeout(checkCSSLoaded, 1000);
+                            setTimeout(checkCSSLoaded,500);
                         } else {
                             console.log("Numero massimo di tentativi raggiunto, ricaricamento della pagina...");
                             // Numero massimo di tentativi raggiunto, ricarica la pagina
@@ -65,7 +65,7 @@
                 }
 
                 // Avvia il controllo del caricamento del CSS dopo un ritardo
-                setTimeout(checkCSSLoaded, 1000);
+                setTimeout(checkCSSLoaded, 500);
             } else {
                 // Se la pagina è già stata ricaricata, mostra il contenuto della pagina
                 document.body.style.display = "block";
