@@ -8,4 +8,4 @@ Disallow: /mail
 User-agent: Googlebot
 Allow: 
 
-Sitemap: https://sbruprint3d.eu/sitemap.xml
+Sitemap: https://www.sbruprint3d.eu/sitemap.xml
