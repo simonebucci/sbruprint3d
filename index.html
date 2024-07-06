@@ -36,6 +36,53 @@
 	<!-- responsive -->
 	<link rel="stylesheet" href="assets/css/responsive.css">
 
+	
+	<style>
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .hero-text {
+            position: absolute;
+            top: 85%; 
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            z-index: 10;
+        }
+        .hero-text h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+        }
+        .hero-text p.subtitle {
+            font-size: 1.5em;
+            margin-bottom: 1em;
+        }
+        .hero-btns a.bordered-btn {
+            padding: 10px 30px;
+            border: 2px solid white;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: background 0.3s, color 0.3s;
+        }
+        .hero-btns a.bordered-btn:hover {
+            background: white;
+            color: black;
+        }
+    </style>
+
 </head>
 <body>
 	
@@ -84,63 +131,23 @@
 	<!-- end header -->
 
 	<!-- home page slider -->
-	<div class="homepage-slider">
-		<!-- single home slider -->
-		<div class="single-homepage-slider homepage-bg-1">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 col-lg-7 offset-lg-1 offset-xl-0">
-						<div class="hero-text">
-							<div class="hero-text-tablecell">
-								<p class="subtitle">Welcome</p>
-								<h1>Discover the latest trends in design and decoration</h1>
-								<div class="hero-btns">
-									<a href="contact.html" class="bordered-btn">Contact Us</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- single home slider -->
-		<div class="single-homepage-slider homepage-bg-2">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-10 offset-lg-1 text-center">
-						<div class="hero-text">
-							<div class="hero-text-tablecell">
-								<p class="subtitle">High quality</p>
-								<h1>We use the best materials only!</h1>
-								<div class="hero-btns">
-									<a href="contact.html" class="bordered-btn">Contact Us</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- single home slider -->
-		<div class="single-homepage-slider homepage-bg-3">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-10 offset-lg-1 text-right">
-						<div class="hero-text">
-							<div class="hero-text-tablecell">
-								<p class="subtitle">Custom design</p>
-								<h1>Contact us for a custom design, we'll make what you need!</h1>
-								<div class="hero-btns">
-									<a href="contact.html" class="bordered-btn">Contact Us</a>
-								</div>
-							</div>
-						</div>
-					</div>
+		
+	<div class="single-homepage-slider homepage-bg-1">
+		<div class="video-container">
+			<video loop autoplay muted playsinline>
+				<source src="assets/video/IMG_5154.MOV" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
+			<div class="hero-text">
+				<p class="subtitle">Welcome</p>
+				<h1>Discover the latest trends in design and decoration</h1>
+				<div class="hero-btns">
+					<a href="contact.html" class="bordered-btn">Contact Us</a>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- end home page slider -->
+					
 
 	<!-- features list section -->
 	<div class="list-section pt-80 pb-80">
@@ -186,107 +193,22 @@
 	</div>
 	<!-- end features list section -->
 
-	<!-- testimonail-section -->
-	<div class="testimonail-section mt-150 mb-150">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="section-title">	
-						<h3><span class="orange-text">Our</span> Reviews</h3>
-						<p>What people say about us.</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-10 offset-lg-1 text-center">
-					<div class="testimonial-sliders">
-						<div class="single-testimonial-slider">
-							<div class="client-meta">
-								<h3>Irene</h3>
-								<p class="testimonial-body">
-									" Super recommended! Shipment delivered on time and perfect item, exactly what I wanted! Very helpful seller, I will definitely purchase again! "
-								</p>
-								<div class="last-icon">
-									<i class="fas fa-quote-right"></i>
-								</div>
-							</div>
-						</div>
-						<div class="single-testimonial-slider">
-							<div class="client-meta">
-								<h3>Manuel</h3>
-								<p class="testimonial-body">
-									" Very fast shipping, Perfect packing, kind and helpful seller, recommended!!  "
-								</p>
-								<div class="last-icon">
-									<i class="fas fa-quote-right"></i>
-								</div>
-							</div>
-						</div>
-						<div class="single-testimonial-slider">
-							<div class="client-meta">
-								<h3>Giorgia</h3>
-								<p class="testimonial-body">
-									" Wonderful!!!!! As in the picture, in fact, better,perfect, beautiful! Thank you  "
-								</p>
-								<div class="last-icon">
-									<i class="fas fa-quote-right"></i>
-								</div>
-							</div>
-						</div>
-						<div class="single-testimonial-slider">
-							<div class="client-meta">
-								<h3>Primeur</h3>
-								<p class="testimonial-body">
-									" Highly recommended, great dialogue and super efficient in all model customization requests  "
-								</p>
-								<div class="last-icon">
-									<i class="fas fa-quote-right"></i>
-								</div>
-							</div>
-						</div>
-						<div class="single-testimonial-slider">
-							<div class="client-meta">
-								<h3>Liene</h3>
-								<p class="testimonial-body">
-									" Super well packaged and faster than expected. I bought both Rayquaza and the Pokeball as gifts. And I couldn't have been happier with what arrived 10/10 Also, the Pokeball has magnets inside that keep it closed. Nice touch  "
-								</p>
-								<div class="last-icon">
-									<i class="fas fa-quote-right"></i>
-								</div>
-							</div>
-						</div>
-						<div class="single-testimonial-slider">
-							<div class="client-meta">
-								<h3>Caster</h3>
-								<p class="testimonial-body">
-									" I needed a pokeball for a cosplay and decided to opt for this one, and boy am I glad I did! Not only does the pokeball itself look INCREDIBLE, but the seller is also incredibly kind and very professional. Absolutely amazed by this transaction. I couldn't be happier because I got the perfect pokeball for my cosplay and the seller was so kind and helpful throughout. Highly recommended!  "
-								</p>
-								<div class="last-icon">
-									<i class="fas fa-quote-right"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end testimonail-section -->
-
 	<!-- advertisement section -->
 	<div class="abt-section mb-150">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-md-12">
 					<div class="abt-bg">
-						<a href="https://www.youtube.com/watch?v=fNz-9jZJ9ZQ" class="video-play-btn popup-youtube"><i class="fas fa-play"></i></a>
+						<a href="https://www.youtube.com/shorts/qfgEl0XTkbA" class="video-play-btn popup-youtube"><i class="fas fa-play"></i></a>
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-12">
 					<div class="abt-text">
 						<p class="top-sub">Since Year 2023</p>
-						<h2>We are <span class="orange-text">SbruPrint3D</span></h2>
-						<p>We are 3D printing enthusiasts located in Rome, Italy. We are committed to offering the highest quality printing you can get.</p>
+						<h3>We transform<span class="orange-text"> your ideas into reality with passion and innovation.</span></h3>
+						<p>With our extensive experience, we offer customized 3D printing solutions that perfectly meet your needs. For us, 3D printing is an opportunity to explore new creative horizons and push beyond existing limits.
+						Our expert team is always up-to-date with the latest industry innovations, ensuring every project is executed with precision and attention to detail. Using cutting-edge technologies and a wide range of materials, we turn concepts into prototypes and prototypes into finished products, guaranteeing quality and precision.</p>
+						<p>Inspire. Innovate. Realize.</p>
 						<a href="about.html" class="boxed-btn mt-4">know more</a>
 					</div>
 				</div>
@@ -294,6 +216,93 @@
 		</div>
 	</div>
 	<!-- end advertisement section -->
+
+		<!-- testimonail-section -->
+		<div class="testimonail-section mt-150 mb-150">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 offset-lg-2 text-center">
+						<div class="section-title">	
+							<h3><span class="orange-text">Our</span> Reviews</h3>
+							<p>What people say about us.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-10 offset-lg-1 text-center">
+						<div class="testimonial-sliders">
+							<div class="single-testimonial-slider">
+								<div class="client-meta">
+									<h3>Irene</h3>
+									<p class="testimonial-body">
+										" Super recommended! Shipment delivered on time and perfect item, exactly what I wanted! Very helpful seller, I will definitely purchase again! "
+									</p>
+									<div class="last-icon">
+										<i class="fas fa-quote-right"></i>
+									</div>
+								</div>
+							</div>
+							<div class="single-testimonial-slider">
+								<div class="client-meta">
+									<h3>Manuel</h3>
+									<p class="testimonial-body">
+										" Very fast shipping, Perfect packing, kind and helpful seller, recommended!!  "
+									</p>
+									<div class="last-icon">
+										<i class="fas fa-quote-right"></i>
+									</div>
+								</div>
+							</div>
+							<div class="single-testimonial-slider">
+								<div class="client-meta">
+									<h3>Giorgia</h3>
+									<p class="testimonial-body">
+										" Wonderful!!!!! As in the picture, in fact, better,perfect, beautiful! Thank you  "
+									</p>
+									<div class="last-icon">
+										<i class="fas fa-quote-right"></i>
+									</div>
+								</div>
+							</div>
+							<div class="single-testimonial-slider">
+								<div class="client-meta">
+									<h3>Primeur</h3>
+									<p class="testimonial-body">
+										" Highly recommended, great dialogue and super efficient in all model customization requests  "
+									</p>
+									<div class="last-icon">
+										<i class="fas fa-quote-right"></i>
+									</div>
+								</div>
+							</div>
+							<div class="single-testimonial-slider">
+								<div class="client-meta">
+									<h3>Liene</h3>
+									<p class="testimonial-body">
+										" Super well packaged and faster than expected. I bought both Rayquaza and the Pokeball as gifts. And I couldn't have been happier with what arrived 10/10 Also, the Pokeball has magnets inside that keep it closed. Nice touch  "
+									</p>
+									<div class="last-icon">
+										<i class="fas fa-quote-right"></i>
+									</div>
+								</div>
+							</div>
+							<div class="single-testimonial-slider">
+								<div class="client-meta">
+									<h3>Caster</h3>
+									<p class="testimonial-body">
+										" I needed a pokeball for a cosplay and decided to opt for this one, and boy am I glad I did! Not only does the pokeball itself look INCREDIBLE, but the seller is also incredibly kind and very professional. Absolutely amazed by this transaction. I couldn't be happier because I got the perfect pokeball for my cosplay and the seller was so kind and helpful throughout. Highly recommended!  "
+									</p>
+									<div class="last-icon">
+										<i class="fas fa-quote-right"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end testimonail-section -->
 
 	<!-- logo carousel -->
 	<div class="logo-carousel-section">
